@@ -41,7 +41,7 @@ Important args:
 ## Training
 
 ```shell
-python SUGRL/train.py 
+python train.py 
 ```
 
 
