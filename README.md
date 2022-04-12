@@ -14,9 +14,9 @@ pip install -r requirements.txt
 
 ## Preparation
 
-weights see >>>[here](SUGRL/checkpoints/)<<<.
+weights see >>>[here](checkpoints/)<<<.
 
-Configs see >>>[here](SUGRL/args.yaml)<<<.
+Configs see >>>[here](args.yaml)<<<.
 
 Dataset (`--dataset-class`, `--dataset-name`,`--Custom-key`)
 
