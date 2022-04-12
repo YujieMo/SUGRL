@@ -1,0 +1,500 @@
+DEFAULT: &DEFAULT
+  black_list: [4,5,6]
+  num_gpus_total: 8
+  num_gpus_to_use: 1
+  verbose: 2
+  save_plot: False
+  val_interval: 1
+
+SUGRL: &SUGRL
+  model_name: SUGRL
+  <<: *DEFAULT
+
+SUGRL-Cora: &SUGRL-Cora
+  <<: *SUGRL
+  black_list: [4,5,6]
+  lr: 0.005
+  out_heads: 1
+  task_type: Node_Transductive
+  val_interval: 1
+
+SUGRL-Cora-classification: &SUGRL-Cora-E
+  <<: *SUGRL-Cora
+  epochs: 500
+  dim: 128
+  dim_x: 4
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  cfg : [512, 128]
+  margin1: 0.8
+  margin2: 0.2
+  NN: 4
+  num1: 100
+  wd: 0.005
+  weight_decay: 0.00005
+  dropout: 0.3
+
+SUGRL-Cora-clu: &SUGRL-Cora-clu
+  <<: *SUGRL-Cora
+  epochs: 2000
+  dim: 32
+  cfg : [512, 32]
+  w_loss1: 20
+  w_loss2: 20
+  w_loss3: 1
+  margin1: 0.8
+  margin2: 0.2
+  NN: 2
+  num1: 100
+  wd: 0.005
+  dropout: 0.4
+  weight_decay: 0.00005
+
+SUGRL-Cora-link: &SUGRL-Cora-link
+  <<: *SUGRL-Cora
+  epochs: 500
+  dim: 128
+  dim_x: 4
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  cfg : [512, 128]
+  margin1: 0.8
+  margin2: 0.2
+  NN: 4
+  num1: 100
+  wd: 0.005
+  weight_decay: 0.00005
+  dropout: 0.3
+
+
+SUGRL-CiteSeer: &SUGRL-CiteSeer
+  <<: *SUGRL
+  black_list: [4,5,6]
+  lr: 0.005
+  out_heads: 1
+  task_type: Node_Transductive
+  val_interval: 1
+
+SUGRL-CiteSeer-classification: &SUGRL-CiteSeer-E
+  <<: *SUGRL-CiteSeer
+  lr: 0.005
+  task_type: Node_Transductive
+  val_interval: 1
+  epochs: 100
+  dim: 128
+  dim_x: 4
+  w_loss1: 5
+  w_loss2: 5
+  w_loss3: 1
+  cfg : [128]
+  margin1: 0.8
+  margin2: 0.4
+  NewATop: 10
+  NN: 5
+  num1: 100
+  wd: 0.05
+  weight_decay: 0.0001
+  dropout: 0.1
+
+SUGRL-CiteSeer-clu: &SUGRL-CiteSeer-clu
+  <<: *SUGRL-CiteSeer
+  lr: 0.005
+  task_type: clustering
+  val_interval: 1
+  epochs: 200
+  dim: 32
+  cfg : [32]
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  margin1: 0.6
+  margin2: 0.4
+  NewATop: 10
+  NN: 3
+  num1: 100
+  wd: 0.05
+  weight_decay: 0.0001
+  dropout: 0.1
+
+SUGRL-CiteSeer-link: &SUGRL-CiteSeer-link
+  <<: *SUGRL-CiteSeer
+  lr: 0.005
+  task_type: Node_Transductive
+  val_interval: 1
+  epochs: 100
+  dim: 128
+  dim_x: 4
+  w_loss1: 5
+  w_loss2: 5
+  w_loss3: 1
+  cfg : [128]
+  margin1: 0.8
+  margin2: 0.4
+  NewATop: 10
+  NN: 5
+  num1: 100
+  wd: 0.05
+  weight_decay: 0.0001
+  dropout: 0.1
+
+SUGRL-PubMed: &SUGRL-PubMed
+  <<: *SUGRL
+  black_list: [4,5,6]
+  lr: 0.01
+  out_heads: 8
+  task_type: Node_Transductive
+  val_interval: 1
+  num_hidden_features: 8
+
+SUGRL-PubMed-classification:
+  <<: *SUGRL-PubMed
+  l2_lambda: 0.0005
+  epochs: 1000
+  w_loss1: 20
+  w_loss2: 20
+  w_loss3: 1
+  margin1: 0.5
+  margin2: 0.5
+  NewATop: 5
+  dim: 128
+  dim_x: 4
+  NN: 3
+  cfg : [512, 128]
+  num1: 200
+  wd: 0.01
+  weight_decay: 0.0001
+  dropout: 0.4
+
+SUGRL-PubMed-clu:
+  <<: *SUGRL-PubMed
+  l2_lambda: 0.0005
+  epochs: 2000
+  w_loss1: 20
+  w_loss2: 20
+  w_loss3: 1
+  margin1: 0.5
+  margin2: 0.5
+  NewATop: 5
+  dim: 32
+  cfg : [512, 32]
+  NN: 1
+  num1: 100
+  wd: 0.01
+  dropout: 0.3
+  weight_decay: 0.0001
+
+SUGRL-PubMed-link:
+  <<: *SUGRL-PubMed
+  l2_lambda: 0.0005
+  epochs: 1000
+  w_loss1: 20
+  w_loss2: 20
+  w_loss3: 1
+  margin1: 0.5
+  margin2: 0.5
+  NewATop: 5
+  dim: 128
+  dim_x: 4
+  NN: 3
+  cfg : [512, 128]
+  num1: 200
+  wd: 0.01
+  weight_decay: 0.0001
+  dropout: 0.4
+
+SUGRL-Photo: &SUGRL-Photo
+  <<: *SUGRL
+  black_list: [4,5,6]
+  lr: 0.01
+  out_heads: 1
+  task_type: Node_Transductive
+  val_interval: 1
+  num_hidden_features: 8
+  epochs: 500
+  to_undirected_at_neg: True
+
+SUGRL-Photo-classification:
+  <<: *SUGRL-Photo
+  epochs: 1000
+  w_loss1: 100
+  w_loss2: 100
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  cfg: [512, 128]
+  NewATop: 0
+  dropout: 0.1
+  NN: 1
+  num1: 200
+  wd: 0.0
+  weight_decay: 0.0001
+
+SUGRL-Photo-clu:
+  <<: *SUGRL-Photo
+  epochs: 2000
+  w_loss1: 200
+  w_loss2: 200
+  w_loss3: 2
+  margin1: 0.5
+  margin2: 0.5
+  dim: 32
+  cfg: [512, 32]
+  NewATop: 0
+  dropout: 0.1
+  NN: 1
+  num1: 200
+  wd: 0.0
+  weight_decay: 0.0001
+
+SUGRL-Photo-link:
+  <<: *SUGRL-Photo
+  epochs: 1000
+  w_loss1: 100
+  w_loss2: 100
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  cfg: [512, 128]
+  NewATop: 0
+  dropout: 0.1
+  NN: 1
+  num1: 200
+  wd: 0.0
+  weight_decay: 0.0001
+
+SUGRL-Computers: &SUGRL-Computers
+  <<: *SUGRL
+  black_list: [4,5,6]
+  lr: 0.01
+  out_heads: 1
+  task_type: Node_Transductive
+  val_interval: 1
+  num_hidden_features: 8
+  epochs: 500
+  to_undirected_at_neg: True
+
+SUGRL-Computers-classification:
+  <<: *SUGRL-Computers
+  epochs: 1000
+  w_loss1: 100
+  w_loss2: 100
+  w_loss3: 2
+  margin1: 0.4
+  margin2: 0.6
+  dim: 128
+  cfg: [512, 128]
+  NewATop: 0
+  dropout: 0.1
+  NN: 5
+  num1: 300
+  wd: 0.0
+  weight_decay: 0.0001
+
+SUGRL-Computers-clu:
+  <<: *SUGRL-Computers
+  epochs: 2000
+  w_loss1: 200
+  w_loss2: 200
+  w_loss3: 20
+  margin1: 0.4
+  margin2: 0.6
+  dim: 32
+  dim_x: 16
+  NewATop: 0
+  dropout: 0.1
+  NN: 1
+  num1: 300
+  wd: 0.0
+
+SUGRL-Computers-link:
+  <<: *SUGRL-Computers
+  epochs: 1000
+  w_loss1: 200
+  w_loss2: 200
+  w_loss3: 2
+  margin1: 0.4
+  margin2: 0.6
+  dim: 128
+  cfg: [512, 128]
+  NewATop: 0
+  dropout: 0.1
+  NN: 5
+  num1: 300
+  wd: 0.0
+  weight_decay: 0.0001
+
+SUGRL-arxiv: &SUGRL-arxiv
+  <<: *SUGRL
+  black_list: [4,5,6]
+  lr: 0.01
+  out_heads: 1
+  task_type: Node_Transductive
+  val_interval: 1
+  num_hidden_features: 8
+  epochs: 500
+  to_undirected_at_neg: True
+
+SUGRL-ogbn-arxiv-classification:
+  <<: *SUGRL-arxiv
+  epochs: 100
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  cfg: [512, 128]
+  dropout: 0.2
+  NN: 1
+  lr2: 5e-1
+  num1: 300
+  wd: 0.0
+  weight_decay: 0.00005
+
+SUGRL-ogbn-arxiv-EN:
+  <<: *SUGRL-arxiv
+  epochs: 100
+  w_loss1: 5
+  w_loss2: 5
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  dim_x: 4
+  NewATop: 0
+  dropout: 0.2
+  NN: 1
+  num1: 300
+  wd: 0.0
+  weight_decay: 0.00005
+
+SUGRL-ogbn-arxiv-EN-clu:
+  <<: *SUGRL-arxiv
+  epochs: 100
+  w_loss1: 5
+  w_loss2: 5
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.1
+  dim: 32
+  dim_x: 16
+  NewATop: 0
+  dropout: 0.2
+  NN: 1
+  num1: 300
+  wd: 0.0
+
+SUGRL-ogbn-arxiv-E-clu:
+  <<: *SUGRL-arxiv
+  epochs: 100
+  w_loss1: 5
+  w_loss2: 5
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.1
+  dim: 32
+  dim_x: 16
+  NewATop: 0
+  dropout: 0.2
+  NN: 1
+  num1: 300
+  wd: 0.0
+
+
+SUGRL-products: &SUGRL-products
+  <<: *SUGRL
+  black_list: [4,5,6]
+  lr: 0.01
+  out_heads: 1
+  task_type: Node_Transductive
+  val_interval: 1
+  num_hidden_features: 8
+  epochs: 500
+  to_undirected_at_neg: True
+
+SUGRL-ogbn-products-classification:
+  <<: *SUGRL-products
+  epochs: 100
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  cfg: [512, 128]
+  dropout: 0.2
+  NN: 1
+  lr2: 5e-1
+  num1: 300
+  wd: 0.0
+  weight_decay: 0.00005
+
+SUGRL-ogbn-products-EN:
+  <<: *SUGRL-products
+  epochs: 100
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  dim_x: 4
+  NewATop: 0
+  dropout: 0.2
+  NN: 10
+  num1: 300
+  wd: 0.0
+
+
+SUGRL-mag: &SUGRL-mag
+  <<: *SUGRL
+  black_list: [4,5,6]
+  task_type: Node_Transductive
+  val_interval: 1
+  num_hidden_features: 8
+  epochs: 500
+  to_undirected_at_neg: True
+
+SUGRL-ogbn-mag-classification:
+  <<: *SUGRL-mag
+  epochs: 100
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  cfg: [512, 128]
+  dropout: 0.2
+  NN: 1
+  lr2: 5e-1
+  num1: 300
+  wd: 0.0
+  weight_decay: 0.00005
+
+SUGRL-ogbn-mag-EN:
+  <<: *SUGRL-mag
+  epochs: 100
+  w_loss1: 10
+  w_loss2: 10
+  w_loss3: 1
+  margin1: 0.9
+  margin2: 0.9
+  dim: 128
+  dim_x: 4
+  NewATop: 0
+  dropout: 0.2
+  NN: 1
+  num1: 300
+  wd: 0.0
+
+
+
+
+
+
+
