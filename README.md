@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ## Preparation
 
-weights see >>>[here](checkpoints/)<<<.
+Pretrained model see >>>[here](checkpoints/)<<<.
 
 Configs see >>>[here](args.yaml)<<<.
 
