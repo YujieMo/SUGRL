@@ -45,5 +45,5 @@ python train.py
 ```
 
 
-## Test
+## Testing
 Choose the custom_key of different downstream tasks
