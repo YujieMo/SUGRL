@@ -47,3 +47,13 @@ python train.py
 
 ## Testing
 Choose the custom_key of different downstream tasks
+
+## Citation
+@InProceedings{Mo_AAAI_2022, 
+title={Simple Unsupervised Graph Representation Learning}, 
+booktitle={AAAI}, 
+author={Mo, Yujie and Peng, Liang and Xu, Jie and Shi, Xiaoshuang and Zhu, Xiaofeng},
+year={2022}, 
+pages={7797-7805} 
+}
+
