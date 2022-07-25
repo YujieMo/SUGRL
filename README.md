@@ -49,6 +49,7 @@ python train.py
 Choose the custom_key of different downstream tasks
 
 ## Citation
+```shell
 @InProceedings{Mo_AAAI_2022, 
 title={Simple Unsupervised Graph Representation Learning}, 
 booktitle={AAAI}, 
@@ -56,4 +57,4 @@ author={Mo, Yujie and Peng, Liang and Xu, Jie and Shi, Xiaoshuang and Zhu, Xiaof
 year={2022}, 
 pages={7797-7805} 
 }
-
+```
