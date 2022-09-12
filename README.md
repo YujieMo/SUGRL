@@ -52,7 +52,7 @@ Choose the custom_key of different downstream tasks
 ```shell
 @InProceedings{Mo_AAAI_2022, 
 title={Simple Unsupervised Graph Representation Learning}, 
-booktitle={AAAI}, 
+booktitle={Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)}, 
 author={Mo, Yujie and Peng, Liang and Xu, Jie and Shi, Xiaoshuang and Zhu, Xiaofeng},
 year={2022}, 
 pages={7797-7805} 
